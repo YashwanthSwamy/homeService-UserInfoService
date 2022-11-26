@@ -1,0 +1,12 @@
+version: "1"
+services:
+  UserInfoService:
+    container_name: UserInfoService
+    image: userinfo:local-test
+    build: .
+    ports:
+      - "15003:15003"
+    environment:
+      PORT: 15003
+      MESSAGEQ_URL: amqp://guest:guest@0.0.0.0:5672
+      SQL_DB_URI: postgres://postgres:postgres@0.0.0.0:32768/postgres
