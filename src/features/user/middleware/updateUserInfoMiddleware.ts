@@ -7,11 +7,17 @@ import { UpdateUserInfoValidator } from "../validators/updateUserInfoValidator";
 class UpdateUserInfoMiddleware{
     public validateRequest(request: Request, response: Response, next: NextFunction) {
         const input: UpdateUserModel = {
-            userId: request.body.userId,
-            name: request.body.name,
-            email: request.body.email,
-            phoneNumber: request.body.phoneNumber,
-            address: request.body.address,
+          userId: request.body.userId,
+          name: request.body?.name,
+          email: request.body?.email,
+          phoneNumber: request.body?.phoneNumber,
+          houseNumber: request.body?.houseNumber,
+          city: request.body?.city,
+          state: request.body?.state,
+          country: request.body?.country,
+          pinCode: request.body?.pinCode,
+          password: request.body?.password,
+          street: request.body?.street
         };
     
         try {
@@ -20,8 +26,14 @@ class UpdateUserInfoMiddleware{
           .validateName()
           .validateEmail()
           .validatePhoneNumber()
-          .validateAddress()
-    
+          .validateHouseNumber()
+          .validateStreet()
+          .validateCity()
+          .validatePinCode()
+          .validateState()
+          .validateCountry()
+          .validatePassword()
+          
         } catch  (err) {
           console.log(err);
           response.status(HttpStatus.BAD_REQUEST);

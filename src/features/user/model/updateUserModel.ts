@@ -3,5 +3,11 @@ export interface UpdateUserModel {
     name?: string;
     email?: string;
     phoneNumber?: string;
-    address?: string;
+    houseNumber?: string;
+    street?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    pinCode?: string;
+    password?: string;
 }

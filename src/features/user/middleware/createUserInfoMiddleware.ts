@@ -7,12 +7,18 @@ class CreateUserInfoMiddleware{
     
     public validateRequest(request: Request, response: Response, next: NextFunction) {
         const input: CreateUserModel = {
-            userId: request.body.userId,
-            name: request.body.name,
-            email: request.body.email,
-            phoneNumber: request.body.phoneNumber,
-            address: request.body.address,
-            userType: request.body.userType
+          userId: request.body.userId,
+          name: request.body.name,
+          email: request.body.email,
+          phoneNumber: request.body.phoneNumber,
+          street: request.body.street,
+          userType: request.body.userType,
+          houseNumber: request.body.houseNumber,
+          city: request.body.city,
+          state: request.body.state,
+          country: request.body.country,
+          pinCode: request.body.pinCode,
+          password: request.body.password
         };
     
         try {
@@ -21,7 +27,13 @@ class CreateUserInfoMiddleware{
           .validateName()
           .validateEmail()
           .validatePhoneNumber()
-          .validateAddress()
+          .validateHouseNumber()
+          .validateStreet()
+          .validateCity()
+          .validatePinCode()
+          .validateState()
+          .validateCountry()
+          .validatePassword()
           .validateUserType()
     
         } catch  (err) {

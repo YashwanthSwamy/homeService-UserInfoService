@@ -41,9 +41,57 @@ export class CreateUserValidator {
     return this;
   }
 
-  validateAddress() {
-    if (!commonValidators.checkIsValidASCII(this.input.address)) {
-      throw new Error("[VALIDATION] userId undefined/ not ASCII");
+  validateHouseNumber() {
+    if (!commonValidators.checkIsValidASCII(this.input.houseNumber)) {
+      throw new Error("[VALIDATION] houseNumber undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validateStreet() {
+    if (!commonValidators.checkIsValidASCII(this.input.street)) {
+      throw new Error("[VALIDATION] street undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validateCity() {
+    if (!commonValidators.checkIsValidASCII(this.input.city)) {
+      throw new Error("[VALIDATION] city undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validateState() {
+    if (!commonValidators.checkIsValidASCII(this.input.state)) {
+      throw new Error("[VALIDATION] state undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validateCountry() {
+    if (!commonValidators.checkIsValidASCII(this.input.country)) {
+      throw new Error("[VALIDATION] country undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validatePinCode() {
+    if (!commonValidators.checkIsValidASCII(this.input.password)) {
+      throw new Error("[VALIDATION] password undefined/ not ASCII");
+    }
+
+    return this;
+  }
+
+  validatePassword() {
+    if (!commonValidators.checkIsValidASCII(this.input.password)) {
+      throw new Error("[VALIDATION] password undefined/ not ASCII");
     }
 
     return this;
