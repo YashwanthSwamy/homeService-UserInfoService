@@ -1,4 +1,4 @@
-import { environmentVariables } from "../configuration/environmentVariables";
+import { environmentVariables } from "../../configuration/environmentVariables";
 
 class LocalDbConnector {
   public getUrl() {

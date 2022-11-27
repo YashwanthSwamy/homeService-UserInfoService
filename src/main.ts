@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import { environmentVariables } from "./configuration/environmentVariables";
-import { TableInitializer } from "./database/tables/intialization";
+import { TableInitializer } from "./externalService/database/tables/intialization";
 import { userInfoRoutes } from "./routes/userInfoRoutes";
 
 const port = environmentVariables.PORT;

@@ -1,5 +1,5 @@
 import Knex, { CreateTableBuilder } from "knex";
-import { environmentVariables } from "../../configuration/environmentVariables";
+import { environmentVariables } from "../../../configuration/environmentVariables";
 import db from "../dbConnector";
 
 class CreateTable {
