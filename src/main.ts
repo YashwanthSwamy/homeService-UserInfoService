@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import { environmentVariables } from "./configuration/environmentVariables";
 import { TableInitializer } from "./externalService/database/tables/intialization";
+import messageQ from "./externalService/messageBroker/messageQ";
 import { userInfoRoutes } from "./routes/userInfoRoutes";
 
 const port = environmentVariables.PORT;
@@ -23,7 +24,7 @@ async function main() {
   await TableInitializer.init()
     .then(async () => {
       console.log("Database up !!!");
-      // return messageQ.init();
+      return messageQ.init();
     })
     .then(async () => {
       console.log("Broker up !!!");
