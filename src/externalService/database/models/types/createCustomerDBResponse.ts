@@ -1,0 +1,3 @@
+interface CreateCutomerDBResponse {
+  CustomerID: number;
+}

@@ -1,3 +1,3 @@
 export interface GetUserInfoModel {
-    userId: string;
+    customerId: string;
 }

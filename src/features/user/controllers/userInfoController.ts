@@ -1,41 +1,29 @@
 import { Request, Response } from "express";
 import HttpStatus from "http-status-codes";
+import { createCustomerService } from "../service/createCustomerService";
+import { getCustomerService } from "../service/getCustomerService";
+import { updateCustomerService } from "../service/updateCustomerService";
 
-class UserInfoController{
-    addUser(req: Request, res: Response){
-        console.log("[Controller] Add User", {input: req.body});
-        try {
-            const result = { status : 200,  data : ""}
-            res.status(HttpStatus.OK);
-            res.send(result.data);
-        } catch (error) {
-            res.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            res.send(undefined);
-        }
+class UserInfoController {
+    async addUser(req: Request, res: Response) {
+        console.log("[Controller] Add User", { input: req.body });
+        const result = await createCustomerService.create(req.body)
+        res.status(HttpStatus.OK);
+        res.send(result.customerId);
     }
 
-    updateUser(req: Request, res: Response){
-        console.log("[Controller] Update User", {input: req.body})
-        try {
-            const result = { status : 200,  data : ""}
-            res.status(HttpStatus.OK);
-            res.send(result.data);
-        } catch (error) {
-            res.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            res.send(undefined);
-        }
+    async updateUser(req: Request, res: Response) {
+        console.log("[Controller] Update User", { input: req.body })
+        const result = await updateCustomerService.update(req.params.customerId, req.body)
+        res.status(result.status);
+        res.send(result.data);
     }
 
-    getUserInfo(req: Request, res: Response){
-        console.log("[Controller] Get User", {input: req.body})
-        try {
-            const result = { status : 200,  data : ""}
-            res.status(HttpStatus.OK);
-            res.send(result.data);
-        } catch (status) {
-            res.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            res.send(undefined);
-        }
+    async getUserInfo(req: Request, res: Response) {
+        console.log("[Controller] Get User", { input: req.params })
+        const result = await getCustomerService.get(req.params.customerId)
+        res.status(result.status);
+        res.send(result.data);
     }
 }
 

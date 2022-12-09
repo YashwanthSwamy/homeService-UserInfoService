@@ -7,17 +7,17 @@ class GetUserInfoMiddleware{
     
     public validateRequest(request: Request, response: Response, next: NextFunction) {
         const input: GetUserInfoModel = {
-            userId: request.body.userId
+          customerId: request.params.customerId
         };
     
         try {
           new GetUserInfoValidator(input)
-            .validateClientId()
+            .validateCustomerId()
     
         } catch  (err) {
           console.log(err);
           response.status(HttpStatus.BAD_REQUEST);
-          response.json(err);
+          response.send(err);
           return;
         }
 

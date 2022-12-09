@@ -9,9 +9,10 @@ export class CreateUserValidator {
     this.input = request;
   }
 
-  validateUserId() {
-    if (!commonValidators.checkIsValidASCII(this.input.userId)) {
-      throw new Error("[VALIDATION] userId undefined/ not ASCII");
+  validateCustomerId() {
+    console.log("c", this.input.customerId)
+    if (!commonValidators.checkIsValidASCII(this.input.customerId)) {
+      throw new Error("[VALIDATION] customer ID undefined/ not ASCII");
     }
 
     return this;
@@ -19,7 +20,7 @@ export class CreateUserValidator {
 
   validateName() {
     if (!commonValidators.checkIsValidASCII(this.input.name)) {
-      throw new Error("[VALIDATION] userId undefined/ not ASCII");
+      throw new Error("[VALIDATION] customer ID undefined/ not ASCII");
     }
 
     return this;
@@ -82,8 +83,8 @@ export class CreateUserValidator {
   }
 
   validatePinCode() {
-    if (!commonValidators.checkIsValidASCII(this.input.password)) {
-      throw new Error("[VALIDATION] password undefined/ not ASCII");
+    if (!commonValidators.checkIsValidASCII(this.input.pinCode)) {
+      throw new Error("[VALIDATION] pincode undefined/ not ASCII");
     }
 
     return this;

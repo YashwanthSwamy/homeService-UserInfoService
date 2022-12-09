@@ -16,6 +16,7 @@ function checkErrors(err: any, req: any, res: any, next: any) {
   }
 }
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(checkErrors);
 app.use(userInfoRoutes);

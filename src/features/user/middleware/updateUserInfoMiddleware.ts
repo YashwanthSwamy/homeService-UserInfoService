@@ -6,8 +6,10 @@ import { UpdateUserInfoValidator } from "../validators/updateUserInfoValidator";
 
 class UpdateUserInfoMiddleware{
     public validateRequest(request: Request, response: Response, next: NextFunction) {
+      console.log(request.params)
+      console.log(request.body)
         const input: UpdateUserModel = {
-          userId: request.body.userId,
+          customerId: request.params.customerId,
           name: request.body?.name,
           email: request.body?.email,
           phoneNumber: request.body?.phoneNumber,
@@ -22,7 +24,7 @@ class UpdateUserInfoMiddleware{
     
         try {
           new UpdateUserInfoValidator(input)
-          .validateUserId()
+          .validateCustomerId()
           .validateName()
           .validateEmail()
           .validatePhoneNumber()
@@ -37,7 +39,7 @@ class UpdateUserInfoMiddleware{
         } catch  (err) {
           console.log(err);
           response.status(HttpStatus.BAD_REQUEST);
-          response.json(err);
+          response.send(err);
           return;
         }
 

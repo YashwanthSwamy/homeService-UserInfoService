@@ -1,5 +1,5 @@
 import { Tables } from "../constants/Tables";
-import UserInfoCustomers from "../UserInfoCustomers/configuration/definition";
+import UserInfoCustomers from "../entities/UserInfoCustomers/configuration/definition";
 import { createTable } from "./CreateTable";
 
 export class TableInitializer {

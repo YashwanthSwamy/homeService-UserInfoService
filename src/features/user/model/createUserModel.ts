@@ -1,7 +1,5 @@
-import { UserType } from "../enum/userType";
-
 export interface CreateUserModel {
-    userId: string;
+    customerId: string;
     name: string;
     email: string;
     phoneNumber: string;
@@ -13,4 +11,5 @@ export interface CreateUserModel {
     pinCode: string;
     password: string;
     userType: string;
+    offeredService: string | null;
 }

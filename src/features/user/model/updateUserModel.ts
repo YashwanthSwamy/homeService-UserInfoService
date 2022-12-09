@@ -1,5 +1,5 @@
 export interface UpdateUserModel {
-    userId: string;
+    customerId: string;
     name?: string;
     email?: string;
     phoneNumber?: string;
