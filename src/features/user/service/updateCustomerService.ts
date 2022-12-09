@@ -3,6 +3,7 @@ import { Operation } from "../../../externalService/database/enums/operation";
 import { UpdateCustomerResponseModel } from "../model/updateCustomerResponseModel";
 import { UpdateUserModel } from "../model/updateUserModel";
 import { getStatusCode } from "../../shared/service/getStatusCode";
+import messageQ from "../../../externalService/messageBroker/messageQ";
 
 class UpdateCustomerService {
     async update(customerId: string, customerInfo: UpdateUserModel) : Promise<UpdateCustomerResponseModel> {
@@ -24,6 +25,8 @@ class UpdateCustomerService {
                 CustomerID: customerId
             }
             const result = await updateCustomerCommand.execute(updateCustomerInfoFor, updateCustomerValues);
+            customerInfo.customerId = customerId;
+            await messageQ.publishUpdatedCustomer(customerInfo);
             return {
                 data: result,
                 status: getStatusCode.operationToStatusCode(Operation.Success)

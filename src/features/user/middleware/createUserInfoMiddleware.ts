@@ -7,7 +7,7 @@ class CreateUserInfoMiddleware {
 
   public validateRequest(request: Request, response: Response, next: NextFunction) {
     const input: CreateUserModel = {
-      customerId: request.body.customerId,
+      customerId: request.body.email,
       name: request.body.name,
       email: request.body.email,
       phoneNumber: request.body.phoneNumber,

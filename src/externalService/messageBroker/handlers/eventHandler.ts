@@ -7,13 +7,6 @@ export class EventHandler {
 
   public async handle(parsedData: any, routingKey: string, headerData: MessagePropertyHeaders): Promise<IEventHandlerResponse> {
     switch (routingKey) {
-      case MessageQEvent.UserCreated : {
-        // return chargerEventHandler.executeUserEvents(
-        //   parsedData,
-        //   routingKey,
-        //   headerData
-        // );
-      }
       default:
         console.warn("[RQ] Not consumed/unknown", { inputData: parsedData, routingKey });
         return {

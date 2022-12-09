@@ -8,6 +8,7 @@ import { updateCustomerService } from "../service/updateCustomerService";
 class UserInfoController {
     async addUser(req: Request, res: Response) {
         console.log("[Controller] Add User", { input: req.body });
+        req.body.customerId = req.body.email
         const result = await createCustomerService.create(req.body)
         res.status(HttpStatus.OK);
         res.send(result.customerId);

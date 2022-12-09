@@ -1,12 +1,14 @@
 import * as amqp from "amqp-connection-manager";
 import { ConfirmChannel, Message } from "amqplib";
+import { CreateUserModel } from "../../features/user/model/createUserModel";
+import { UpdateUserModel } from "../../features/user/model/updateUserModel";
 import channelInitializer from "./configuration/channelInitialiser";
 
 import { MessageQConnector } from "./Connector/MessageConnector";
 import eventHandler from "./handlers/eventHandler";
 import { IEventHandlerResponse } from "./models/eventHandlerResponse";
 import { ActionEvents } from "./Types/ActionEvents";
-import { MessageQChannelVariables, MessageQQueues } from "./types/messageQEnums";
+import { MessageQChannelVariables, MessageQEvent, MessageQQueues } from "./types/messageQEnums";
 
 class MessageQ extends MessageQConnector {
     MessageQChannelTX!: amqp.ChannelWrapper;
@@ -126,6 +128,37 @@ class MessageQ extends MessageQConnector {
             console.error("[RQ] Rejecting", { event: eventName, inputData: JSON.parse(eventData.content.toString()) });
             this.MessageQChannelRX.nack(eventData, undefined, false);
         }
+      }
+
+
+      async publishCreatedCustomer(customerData: CreateUserModel): Promise<void> {
+        if (this.MessageQChannelTX === undefined) {
+          return;
+        }
+        console.log("[RQ] Publishing Create Customer Message");
+        this.MessageQChannelTX.publish(
+          "events",
+          MessageQEvent.CustomerCreated,
+          Buffer.from(
+            JSON.stringify(customerData)
+          ),
+          { persistent: true }
+        );
+      }
+
+      async publishUpdatedCustomer(customerData: UpdateUserModel): Promise<void> {
+        if (this.MessageQChannelTX === undefined) {
+          return;
+        }
+        console.log("[RQ] Publishing Update Customer Message", {msg: customerData});
+        this.MessageQChannelTX.publish(
+          "events",
+          MessageQEvent.CustomerUpdated,
+          Buffer.from(
+            JSON.stringify(customerData)
+          ),
+          { persistent: true }
+        );
       }
 }
 

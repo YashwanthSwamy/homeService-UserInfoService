@@ -1,5 +1,6 @@
 import createCustomerCommand from "../../../externalService/database/entities/UserInfoCustomers/command/createCustomerCommand";
 import { Operation } from "../../../externalService/database/enums/operation";
+import messageQ from "../../../externalService/messageBroker/messageQ";
 import { CreateCustomerResponseModel } from "../model/createCustomerResponseModel";
 import { CreateUserModel } from "../model/createUserModel";
 
@@ -8,7 +9,7 @@ class CreateCustomerService {
         try {
             const result = await createCustomerCommand.execute(
                 {
-                    CustomerID: customerInfo.email,
+                    CustomerID: customerInfo.customerId,
                     Name: customerInfo.name,
                     Email: customerInfo.email,
                     PhoneNumber: customerInfo.phoneNumber,
@@ -22,6 +23,7 @@ class CreateCustomerService {
                     UserType: customerInfo.userType,
                     OfferedService: customerInfo.offeredService
                 });
+            await messageQ.publishCreatedCustomer(customerInfo);
             return {
                 customerId: result,
                 status: Operation.Success
