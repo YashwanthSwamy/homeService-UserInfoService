@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import HttpStatus from "http-status-codes";
+import { checkAuthorizationService } from "../service/checkAuthorizationService";
 import { createCustomerService } from "../service/createCustomerService";
 import { getCustomerService } from "../service/getCustomerService";
 import { updateCustomerService } from "../service/updateCustomerService";
@@ -20,11 +21,19 @@ class UserInfoController {
     }
 
     async getUserInfo(req: Request, res: Response) {
-        console.log("[Controller] Get User", { input: req.params })
+        console.log("[Controller] Get User", { input: {customerId: req.params.customerId} })
         const result = await getCustomerService.get(req.params.customerId)
         res.status(result.status);
         res.send(result.data);
     }
+
+    async checkAuthorization(req: Request, res: Response) {
+        console.log("[Controller] Check Authorization", { input: {customerId: req.params.customerId} })
+        const result = await checkAuthorizationService.getCustomerInfoIfAuthorized(req.params.customerId, req.body.password)
+        res.status(result.status);
+        res.send(result.data);
+    }
+
 }
 
 const userInfoController = new UserInfoController()
