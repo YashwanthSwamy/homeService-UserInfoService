@@ -1,5 +1,5 @@
 import CustomerModelDTO from "../../../externalService/database/models/DTO/customerModelDTO";
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 
 export interface UpdateCustomerResponseModel {
     data?: CustomerModelDTO;

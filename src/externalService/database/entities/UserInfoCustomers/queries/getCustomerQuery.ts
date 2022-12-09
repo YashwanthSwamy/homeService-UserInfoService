@@ -1,7 +1,7 @@
 import { Tables } from "../../../constants/Tables";
 import db from "../../../dbConnector";
 import CustomerModelDTO from "../../../models/DTO/customerModelDTO";
-import { Operation } from "../../../models/types/operation";
+import { Operation } from "../../../enums/operation";
 
 type SelectorModel = { CustomerID: string; };
 

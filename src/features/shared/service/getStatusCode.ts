@@ -1,4 +1,4 @@
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 import HttpStatus from "http-status-codes";
 
 export class GetStausCode {

@@ -3,10 +3,6 @@ export enum Operation {
   AlreadyExists,
   Error,
   ObjectDoesNotExists,
-  AlreadyOccuringTransaction,
-  AlreadyOccuringReservation,
-  StartAtGreaterThanEndAt,
-  DateTimeParseError,
   NotOK,
   BadRequest,
   InternalServerError

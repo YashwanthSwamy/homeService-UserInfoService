@@ -2,7 +2,7 @@ import { Tables } from "../../../constants/Tables";
 import db from "../../../dbConnector";
 import { UpdateCustomerModel } from "../../../models/DAO/updateCustomerModel";
 import CustomerModelDTO from "../../../models/DTO/customerModelDTO";
-import { Operation } from "../../../models/types/operation";
+import { Operation } from "../../../enums/operation";
 
 
 export class UpdateCustomerCommand {

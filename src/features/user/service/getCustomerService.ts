@@ -1,5 +1,5 @@
 import { getCustomerQuery } from "../../../externalService/database/entities/UserInfoCustomers/queries/getCustomerQuery";
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 import { getStatusCode } from "../../shared/service/getStatusCode";
 
 class GetCustomerService {

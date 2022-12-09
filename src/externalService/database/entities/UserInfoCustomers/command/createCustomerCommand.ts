@@ -1,7 +1,7 @@
 import { Tables } from "../../../constants/Tables";
 import db from "../../../dbConnector";
 import { CreateCustomerModel } from "../../../models/DAO/createCustomerModel";
-import { Operation } from "../../../models/types/operation";
+import { Operation } from "../../../enums/operation";
 
 
 export class CreateCustomerCommand {

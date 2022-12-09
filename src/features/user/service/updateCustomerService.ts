@@ -1,5 +1,5 @@
 import updateCustomerCommand from "../../../externalService/database/entities/UserInfoCustomers/command/updateCustomerCommand";
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 import { UpdateCustomerResponseModel } from "../model/updateCustomerResponseModel";
 import { UpdateUserModel } from "../model/updateUserModel";
 import { getStatusCode } from "../../shared/service/getStatusCode";

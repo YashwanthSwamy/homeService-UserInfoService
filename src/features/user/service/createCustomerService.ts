@@ -1,5 +1,5 @@
 import createCustomerCommand from "../../../externalService/database/entities/UserInfoCustomers/command/createCustomerCommand";
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 import { CreateCustomerResponseModel } from "../model/createCustomerResponseModel";
 import { CreateUserModel } from "../model/createUserModel";
 

@@ -1,4 +1,4 @@
-import { Operation } from "../../../externalService/database/models/types/operation";
+import { Operation } from "../../../externalService/database/enums/operation";
 
 export interface CreateCustomerResponseModel {
     customerId?: number;
