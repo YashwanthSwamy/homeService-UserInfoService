@@ -8,7 +8,7 @@ class CheckAuthorizationMiddleware{
     public validateRequest(request: Request, response: Response, next: NextFunction) {
         const input: CheckUserAuthorizationModel = {
           customerId: request.params.customerId,
-          password: request.body.password
+          password: request.query.password as string
         };
     
         try {

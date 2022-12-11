@@ -11,7 +11,7 @@ class UserInfoController {
         req.body.customerId = req.body.email
         const result = await createCustomerService.create(req.body)
         res.status(HttpStatus.OK);
-        res.send(result.customerId);
+        res.send(result);
     }
 
     async updateUser(req: Request, res: Response) {
@@ -30,7 +30,7 @@ class UserInfoController {
 
     async checkAuthorization(req: Request, res: Response) {
         console.log("[Controller] Check Authorization", { input: {customerId: req.params.customerId} })
-        const result = await checkAuthorizationService.getCustomerInfoIfAuthorized(req.params.customerId, req.body.password)
+        const result = await checkAuthorizationService.getCustomerInfoIfAuthorized(req.params.customerId, req.query.password as string)
         res.status(result.status);
         res.send(result.data);
     }
