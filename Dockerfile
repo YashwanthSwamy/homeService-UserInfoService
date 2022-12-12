@@ -1,17 +1,14 @@
 FROM node:14-alpine as base
-EXPOSE 15003
+EXPOSE 8080
+
 WORKDIR /app
-COPY package*.json .npmrc* ./
+
+COPY package.json .
 RUN npm install
 
-COPY . .
+ADD . /app
 
-RUN npm run-script build
-RUN echo "" > .npmrc
-
-FROM base as DEBUG
-CMD [ "npm", "run", "start:local"]
-
-FROM base
+COPY . /app
+RUN npm run build
 
 CMD [ "npm", "run", "serve"]
